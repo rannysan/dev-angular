@@ -2,45 +2,72 @@
   <mat-card-header class="header">
     <div class="subheading-2 title">Inserir</div>
     <div class="header-actions">
-      <button mat-icon-button ><mat-icon>close</mat-icon></button>
+      <button mat-icon-button><mat-icon>close</mat-icon></button>
     </div>
   </mat-card-header>
   <mat-card-content class="content">
-    <form class="example-form">
+    <form class="example-form" [formGroup]="form">
       <div class="grid-form">
         <div class="grid-photo">
-          <img
-            src="{{photoView}}"
-            class="cont-img"
-            alt="Exemplo imagem"
-          />
+          <img src="{{ photoView }}" class="cont-img" alt="Exemplo imagem" />
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="URL" #urlPic/>
+            <label for="avatar">URL da foto</label>
+            <input
+              matInput
+              placeholder="URL"
+              #urlPic
+              id="avatar"
+              formControlName="avatar"
+            />
           </mat-form-field>
 
-          <button mat-button color="basic" (click)="photoView = urlPic.value">Carregar</button>
+          <button mat-button color="basic" (click)="photoView = urlPic.value">
+            Carregar
+          </button>
           <br /><br /><br />
 
-          <mat-checkbox>Favorito</mat-checkbox>
+          <mat-checkbox id="isFavorite" formControlName="isFavorite"
+            >Favorito</mat-checkbox
+          >
         </div>
 
         <div class="insert-info">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Primeiro nome*" />
+            <input
+              matInput
+              placeholder="Primeiro nome*"
+              id="firstName"
+              formControlName="firstName"
+            />
           </mat-form-field>
           <br />
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Ultimo nome*" />
+            <input
+              matInput
+              placeholder="Ultimo nome*"
+              id="lastName"
+              formControlName="lastName"
+            />
           </mat-form-field>
           <br />
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Telefone*" mask="(00)00000-0000" />
+            <input
+              matInput
+              placeholder="Telefone*"
+              mask="(00)00000-0000"
+              id="phone"
+              formControlName="phone"
+            />
           </mat-form-field>
           <br />
           <mat-form-field class="example-full-width">
-            <mat-select placeholder="Genero*">
+            <mat-select
+              placeholder="Genero*"
+              id="gender"
+              formControlName="gender"
+            >
               <mat-option *ngFor="let gender of genders" [value]="gender.value">
                 {{ gender.viewValue }}
               </mat-option>
@@ -53,40 +80,51 @@
             <input
               matInput
               placeholder="Email*"
-              [formControl]="emailFormControl"
+              id="email"
               [errorStateMatcher]="matcher"
+              formControlName="email"
             />
-            <mat-error
-              *ngIf="
-                emailFormControl.hasError('email') &&
-                !emailFormControl.hasError('required')
-              "
-            >
-              Insera o email corretamente
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Company*" />
+            <input
+              matInput
+              placeholder="Company*"
+              id="company"
+              formControlName="company"
+            />
           </mat-form-field>
           <br />
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Endereço" />
+            <input
+              matInput
+              placeholder="Endereço"
+              id="address"
+              formControlName="address"
+            />
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Comentario"></textarea>
+            <textarea
+              matInput
+              placeholder="Comentario"
+              id="comments"
+              formControlName="comments"
+            ></textarea>
           </mat-form-field>
         </div>
       </div>
       <div class="btn-group">
-        <button mat-fab color="primary" class="btn-insert">
+        <button
+          mat-fab
+          color="primary"
+          type="submit"
+          class="btn-insert"
+          (click)="onSubmit()"
+        >
           <mat-icon>done</mat-icon>
         </button>
-        <button mat-fab color="primary" class="btn-insert">
+        <button mat-fab color="primary" class="btn-insert" (click)="onCancel()">
           <mat-icon>close</mat-icon>
         </button>
       </div>

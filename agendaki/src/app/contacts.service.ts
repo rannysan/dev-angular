@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Contact } from './contacts';
 import { environment } from 'src/environments/environment';
-import { delay, tap } from 'rxjs/operators';
+import { delay, tap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,9 @@ export class ContactsService {
       delay(1000),
       tap(console.log)
     );
+  }
+
+  public newContact(contact) {
+    return this.http.post(`${this.API}contacts`, contact).pipe(take(1));
   }
 }

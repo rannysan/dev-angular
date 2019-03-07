@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,11 +7,16 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { InsertComponent } from './insert/insert.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 
-const APP_ROUTES: Routes = [
+const appRoutes: Routes = [
   {path: 'favorites', component: FavoritesComponent},
   {path: 'contact/:id', component: ContactDetailComponent},
-  {path: 'test', component: InsertComponent},
+  {path: 'new', component: InsertComponent},
   { path: '', component: HomeComponent }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
+})
+
+export class AppRoutingModule {}

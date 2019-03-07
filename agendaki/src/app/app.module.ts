@@ -12,13 +12,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
-import { routing } from './app.routing';
+// import { routing } from './app.routing';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { InsertComponent } from './insert/insert.component';
 import {NgxMaskModule} from 'ngx-mask';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
     HttpClientModule,
     LayoutModule,
     MatToolbarModule,
-    routing,
+    AppRoutingModule,
     MatButtonModule,
     MatAutocompleteModule,
     MatIconModule,
