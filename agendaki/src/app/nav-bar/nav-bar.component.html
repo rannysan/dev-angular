@@ -1,12 +1,22 @@
-<div class="nav">
-  <h1>Agendaki</h1>
-  <div class="search-bar">
-    <img src="../../assets/images/user-icon.png" alt="user image" />
-    <input type="text" class="input-search" placeholder="Buscar..." />
-  </div>
-
-    <ul class="opt-nav-bar">
-      <li>Todos</li>
-      <li>Favoritos</li>
-    </ul>
-</div>
+<mat-toolbar class="sidenav-container">
+  <mat-toolbar-row>
+    <span>AgendAki</span>
+    <span class="example-spacer"></span>
+    <form class="example-form">
+      <mat-form-field class="example-full-width input-size" >
+        <input type="text" placeholder="Buscar..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <span class="example-spacer"></span>
+    <button mat-button class="btn-nav" routerLink="">Todos</button>
+    <button mat-button class="btn-nav"routerLink="/favorites">Favoritos</button>
+  </mat-toolbar-row>
+  <!-- <mat-toolbar-row>
+      <span>Favoritos</span>
+  </mat-toolbar-row> -->
+</mat-toolbar>

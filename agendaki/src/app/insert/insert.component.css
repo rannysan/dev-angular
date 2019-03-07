@@ -1,0 +1,78 @@
+.card {
+  padding: 0;
+  margin: 30px auto 0;
+  width: 80%;
+  z-index: 10;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  box-sizing: border-box;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.title {
+  margin-right: auto;
+  font-weight: 400;
+  font-size: 1.2em;
+  color: black;
+}
+
+.cont-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+.content {
+  height: 500px;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.grid-form {
+  padding-top: 30px;
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 300px 400px 400px;
+}
+
+.cont-photo {
+  grid-column: 1;
+}
+
+.insert-info {
+  grid-column: 2;
+  text-align: center;
+}
+
+.insert-more-info {
+  grid-column: 3;
+}
+
+.example-form {
+  min-width: 200px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-insert{
+  margin: 40px 50px 0px 50px;
+}
+
+.example-full-width {
+  width: 80%;
+}
+
+mat-option {
+  z-index: 9999;
+}

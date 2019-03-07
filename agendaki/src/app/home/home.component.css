@@ -1,0 +1,12 @@
+.flex-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+

@@ -1,0 +1,51 @@
+<div *ngIf="(contact$ | async) as contact" class="flex-list">
+  <mat-card class="card">
+    <mat-card-header class="header">
+      <div class="subheading-2 title">{{ contact.firstName }} {{ contact.lastName }} - Detalhes</div>
+
+      <div class="header-actions">
+        <button mat-icon-button><mat-icon>create</mat-icon></button>
+        <button mat-icon-button><mat-icon>close</mat-icon></button>
+        <button mat-icon-button>
+          <mat-icon [style.color]="contact.isFavorite ? 'yellow' : 'black'"
+            >star</mat-icon
+          >
+        </button>
+        <button mat-icon-button>
+          <mat-icon style="color: red">cancel</mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="content">
+        <div class="basic-info">
+          <img
+            src="{{ contact.info.avatar }}"
+            alt="foto do usuário"
+            class="contact_photo"
+          />
+          <h3>Nome:</h3>
+          <p>{{ contact.firstName }} {{ contact.lastName }}</p>
+          <h3>Genero</h3>
+          <p
+            [innerText]="contact.gender === 'm' ? 'Masculino' : 'Feminino'"
+          ></p>
+        </div>
+        <div class="more-info">
+          <h3>Email</h3>
+          <p>{{ contact.email }}</p>
+          <h3>Endereço</h3>
+          <p>{{ contact.info.address }}</p>
+          <h3>Telefone</h3>
+          <p>{{ contact.info.phone }}</p>
+          <h3>Empresa</h3>
+          <p>{{ contact.info.company }}</p>
+        </div>
+        <div class="comment">
+          <h3>Comentário</h3>
+          <textarea>{{ contact.info.comments }}</textarea>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

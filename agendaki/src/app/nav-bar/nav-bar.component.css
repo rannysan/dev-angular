@@ -1,77 +1,42 @@
-.nav {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  background-color: #9ba9b4;
-  margin: -10px -15px 0px -15px;
-  font-family: "Kanit", sans-serif;
-  color: #ffffff;
-  box-shadow: 1px #0000005e;
-  font-weight: 400;
-  line-height: 1.5;
+.sidenav-container span{
+  font-style: italic;
 }
 
-.nav h1 {
-  font-size: 1.5em;
-  line-height: 1.4em;
-  margin: 0px;
-  margin-left: 20px;
-  text-shadow: 2px 2px #0000005e;
-  position: absolute;
+.mat-toolbar{
+  background-color: #9c27b0;
+  color: white;
+  border-bottom:  1px solid rgba(255, 255, 255, 0.205);
 }
 
-
-.input-search {
-  border-radius: 30px;
-  float: left;
-  background-color: transparent;
-  padding-left: 5px;
-  color: #2c2c2c;
-  line-height: normal;
-  font-size: 1em;
-  border: none;
-  height: 32px;
-  width: 85%;
-
+.sidenav .mat-toolbar {
+  background: inherit;
 }
 
-.search-bar {
-  background-color: #ffffff;
-  border: solid 1px;
-  border-radius: 15px;
-  width: 30%;
-  height: 32px;
-  margin-left: auto;
-  margin-right: auto;
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.search-bar img {
-  border: none;
-  float: left;
-  height: 32px;
-  border-radius: 0 7px 7px 0;
-  width: 35px;
-  font-weight: bold;
-  background:transparent;
+.btn-nav {
+  padding: 0 14px;
 }
 
-.opt-nav-bar{
-  text-align: center;
-  position: relative;
-  float: right;
-  margin-top: -30px;
-  margin-right: 50px;
-  font-size: 1.2em;
+.example-spacer {
+  flex: 1 1 auto;
 }
 
-.opt-nav-bar li{
-  list-style: none;
-  display: inline;
-  color: black;
-  margin: 10px;
-  padding: 8px;
+.example-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
 }
 
-.opt-nav-bar li:hover{
-  border: 1px solid #00000054;
-  border-radius: 30px;
+.example-full-width {
+  width: 100%;
 }
+
+.input-size{
+  font-size: 11pt;
+}
+
