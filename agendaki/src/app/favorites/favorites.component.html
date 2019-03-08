@@ -1,8 +1,39 @@
 <div class="container">
-  <mat-grid-list cols="4" rowHeight="1:1">
-    <mat-grid-tile> <app-card></app-card> </mat-grid-tile>
-    <mat-grid-tile><app-card></app-card></mat-grid-tile>
-    <mat-grid-tile><app-card></app-card></mat-grid-tile>
-    <mat-grid-tile><app-card></app-card></mat-grid-tile>
-  </mat-grid-list>
-</div>
+    <div
+      *ngIf="(contacts$ | async)  as contacts; else loadingError"
+      class="flex-list"
+    >
+      <div *ngFor="let contact of favArrayCreate(contacts) | slice: lowValue : highValue">
+        <app-card
+          [firstName]="contact.firstName"
+          [lastName]="contact.lastName"
+          [gender]="contact.gender"
+          [avatar]="contact.info.avatar"
+          [phone]="contact.info.phone"
+          [isFavorite]="contact.isFavorite"
+          [id]="contact.id"
+          (deleted)="onDeleted()"
+        ></app-card>
+      </div>
+      <div class="paginator">
+        <mat-paginator
+          [length]="getArrayFunctionLength(favArrayCreate(contacts))"
+          [pageSize]="pageSize"
+          [hidePageSize]= "true"
+          [showFirstLastButtons]="false"
+          (page)="pageEvent = getPaginatorData($event)"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+    <ng-template #loadingError>
+      <div *ngIf="(error$ | async); else loading">
+        Erro ao carregar cursos. Tente novamente mais tarde.
+      </div>
+      <ng-template #loading>
+        <div class="container center">
+          <mat-spinner color="primary"></mat-spinner>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>

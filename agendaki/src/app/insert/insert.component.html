@@ -1,11 +1,11 @@
-<mat-card class="card">
+<mat-card class="card" >
   <mat-card-header class="header">
     <div class="subheading-2 title">Inserir</div>
     <div class="header-actions">
-      <button mat-icon-button><mat-icon>close</mat-icon></button>
+      <button mat-icon-button (click)="onCancel()"><mat-icon>close</mat-icon></button>
     </div>
   </mat-card-header>
-  <mat-card-content class="content">
+  <mat-card-content class="content" >
     <form class="example-form" [formGroup]="form">
       <div class="grid-form">
         <div class="grid-photo">
@@ -129,5 +129,11 @@
         </button>
       </div>
     </form>
+
+    <ng-template #loading>
+        <div class="container center">
+          <mat-spinner color="primary"></mat-spinner>
+        </div>
+      </ng-template>
   </mat-card-content>
 </mat-card>

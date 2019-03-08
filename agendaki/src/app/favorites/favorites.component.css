@@ -1,1 +1,26 @@
 
+.flex-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.paginator{
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+mat-paginator{
+  background-color: #9c27b0;
+  color: white;
+  border-radius: 10px;
+}
+

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable, Subject, empty } from 'rxjs';
 import { Contact } from '../contacts';
 import { catchError } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-contact-detail',
@@ -17,7 +18,7 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
   contact$: Observable<Contact>;
   error$ = new Subject<boolean>();
 
-  constructor(private route: ActivatedRoute, private service: ContactsService) {
+  constructor(private route: ActivatedRoute, private service: ContactsService, private location: Location) {
     // this.id = this.route.snapshot.params['id'];
   }
 
@@ -44,6 +45,10 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
         return empty();
       })
     );
+  }
+
+  cancel() {
+    this.location.back();
   }
 
 }

@@ -14,7 +14,7 @@ export class ContactsService {
   constructor(private http: HttpClient) { }
 
   public list() {
-    return this.http.get<Contact[]>(`${this.API}contacts?limit=5`)
+    return this.http.get<Contact[]>(`${this.API}contacts`)
     .pipe(
       delay(1000),
       tap(console.log)
@@ -22,14 +22,25 @@ export class ContactsService {
   }
 
   public getContact(id) {
-    return this.http.get<Contact[]>(`${this.API}contacts/${id}`)
-    .pipe(
-      delay(1000),
-      tap(console.log)
-    );
+    return this.http.get<Contact>(`${this.API}contacts/${id}`).pipe(take(1));
   }
 
   public newContact(contact) {
     return this.http.post(`${this.API}contacts`, contact).pipe(take(1));
+  }
+
+  public updateContact(contact) {
+    return this.http.put(`${this.API}contacts/${contact.id}`, contact).pipe(take(1));
+  }
+
+  public deleteContact(id) {
+    return this.http.delete(`${this.API}contacts/${id}`).pipe(take(1));
+  }
+
+  save(contact) {
+    if (contact.id) {
+      return this.updateContact(contact);
+    }
+    return this.newContact(contact);
   }
 }

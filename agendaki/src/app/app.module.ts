@@ -20,6 +20,7 @@ import { InsertComponent } from './insert/insert.component';
 import {NgxMaskModule} from 'ngx-mask';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { AppRoutingModule } from './app.routing.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AppRoutingModule } from './app.routing.module';
     MatProgressSpinnerModule,
     MatSelectModule,
     NgxMaskModule.forRoot(),
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

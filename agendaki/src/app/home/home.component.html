@@ -1,17 +1,29 @@
-
-
 <div class="container">
-  <div *ngIf="(contacts$ | async) as contacts; else loadingError" class="flex-list">
-    <div *ngFor="let contact of contacts">
+  <div
+    *ngIf="(contacts$ | async) as contacts; else loadingError"
+    class="flex-list"
+  >
+    <div *ngFor="let contact of contacts | slice: lowValue : highValue">
       <app-card
         [firstName]="contact.firstName"
         [lastName]="contact.lastName"
         [gender]="contact.gender"
         [avatar]="contact.info.avatar"
         [phone]="contact.info.phone"
-        [isFavorite]="contact.isFacorite"
+        [isFavorite]="contact.isFavorite"
         [id]="contact.id"
+        (deleted)="onRefresh()"
       ></app-card>
+    </div>
+    <div class="paginator">
+      <mat-paginator
+        [length]="contacts.length"
+        [pageSize]="pageSize"
+        [hidePageSize]= "true"
+        [showFirstLastButtons]="false"
+        (page)="pageEvent = getPaginatorData($event)"
+      >
+      </mat-paginator>
     </div>
   </div>
   <ng-template #loadingError>

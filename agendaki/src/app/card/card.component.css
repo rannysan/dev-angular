@@ -1,6 +1,6 @@
 .example-card {
-  width: 200px;
-  max-height: 600px;
+  width: 220px;
+  max-height: 490px;
   background-color: #424242;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -9,40 +9,48 @@
 }
 
 .example-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-.btn-card{
+.btn-card {
   width: 37px;
   height: 37px;
   margin: 10px;
   transition: 1seg ease-in-out transform;
 }
 
-.btn-card:hover{
+.btn-card:hover {
   transform: scale(1.2);
   cursor: pointer;
 }
 
-.center button{
+.center button {
   background-color: transparent;
   border: none;
 }
 
-mat-card-subtitle{
+mat-card-subtitle {
   color: #424242;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.header-image-no-fav {
-  background-image: url('../../assets/images/starBlack.png');
-  background-size: cover;
+.star-fav {
+  width: 90%;
+  height: 90%;
 }
 
-mat-card-image{
+.star-fav:hover {
+  cursor: pointer;
+}
+
+mat-card-image {
   width: 80%;
   height: 20%;
+}
+
+mat-card-title {
+  font-size: 1.3em;
 }
