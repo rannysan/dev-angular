@@ -16,8 +16,7 @@ export class ContactsService {
   public list() {
     return this.http.get<Contact[]>(`${this.API}contacts`)
     .pipe(
-      delay(1000),
-      tap(console.log)
+      delay(1000)
     );
   }
 

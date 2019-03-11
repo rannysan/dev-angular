@@ -17,18 +17,6 @@ export class ContactResolverGuard implements Resolve<Contact> {
       return this.service.getContact(route.params['id']);
     }
 
-    return of({
-      id: null,
-      firstName: null,
-      lastName: null,
-      email: null,
-      gender: null,
-      isFavorite: null,
-      company: null,
-      avatar: null,
-      address: null,
-      phone: null,
-      comments: null
-    });
+    return of(null);
   }
 }

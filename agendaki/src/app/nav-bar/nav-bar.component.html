@@ -6,8 +6,11 @@
       <mat-form-field class="example-full-width input-size" >
         <input type="text" placeholder="Buscar..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+          <mat-option *ngFor="let option of filteredOptions | async" [routerLink]="['contact', option.id]" routerLinkActive="router-link-active" >
+            <div class="optionCont">
+              <img src="{{option.info.avatar}}" alt="mini foto do contato" class="mini-photo">
+             {{option.firstName}} {{option.lastName}}
+          </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

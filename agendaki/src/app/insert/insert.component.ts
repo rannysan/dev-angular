@@ -19,7 +19,20 @@ export interface Gender {
   styleUrls: ['./insert.component.css']
 })
 export class InsertComponent implements OnInit {
-  form: FormGroup;
+  public form = this.fb.group({
+    firstName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    lastName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    email: [null, [Validators.required, Validators.email]],
+    gender: [null, Validators.required],
+    avatar: [null, [Validators.required, Validators.minLength(3)]],
+    company: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    address: [null, Validators.minLength(3)],
+    phone: [null, Validators.minLength(3)],
+    comments: [null],
+    isFavorite: [false],
+    id: [null]
+  });
+
   submitted = false;
   sub: Subscription;
   id: number;
@@ -44,20 +57,11 @@ export class InsertComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:no-string-literal
     const contact = this.route.snapshot.data['contact'];
-
-    this.form = this.fb.group({
-      id: [contact.id],
-      firstName: [contact.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      lastName: [contact.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      email: [contact.email, [Validators.required, Validators.email]],
-      gender: [contact.gender, Validators.required],
-      isFavorite: [contact.isFavorite],
-      company: [contact.info.company, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      avatar: [contact.info.avatar, [Validators.required, Validators.minLength(3)]],
-      address: [contact.info.address, Validators.minLength(3)],
-      phone: [contact.info.phone, Validators.minLength(3)],
-      comments: [contact.info.comments]
-    });
+    if (contact !== null) {
+      const auxCont = this.transformContact(contact);
+      this.form.patchValue(auxCont);
+    }
+    console.log(contact);
   }
 
   onSubmit() {
@@ -91,6 +95,24 @@ export class InsertComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
     this.location.back();
+  }
+
+  transformContact(contact) {
+    const aux = {
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email,
+      gender: contact.gender,
+      isFavorite: contact.isFavorite,
+      company: contact.info.company,
+      avatar: contact.info.avatar,
+      address: contact.info.address,
+      phone: contact.info.phone,
+      comments: contact.info.comments,
+      id: contact.id
+    };
+
+    return aux;
   }
 
 }
