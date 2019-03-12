@@ -22,7 +22,8 @@ const appRoutes: Routes = [
      contact: ContactResolverGuard
    }
   },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'contact', redirectTo: '', component: HomeComponent }
 ];
 
 @NgModule({

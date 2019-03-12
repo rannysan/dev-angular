@@ -3,21 +3,41 @@
     <span>AgendAki</span>
     <span class="example-spacer"></span>
     <form class="example-form">
-      <mat-form-field class="example-full-width input-size" >
-        <input type="text" placeholder="Buscar..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-form-field
+        class="example-full-width input-size"
+        (click)="loadContactFilter(getFlag())"
+      >
+        <input
+          type="text"
+          placeholder="Buscar..."
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [routerLink]="['contact', option.id]" routerLinkActive="router-link-active" >
+          <mat-option
+            *ngFor="let option of (filteredOptions | async)"
+            [routerLink]="['contact', option.id]"
+            routerLinkActive="router-link-active"
+          >
             <div class="optionCont">
-              <img src="{{option.info.avatar}}" alt="mini foto do contato" class="mini-photo">
-             {{option.firstName}} {{option.lastName}}
-          </div>
+              <img
+                src="{{ option.info.avatar }}"
+                alt="mini foto do contato"
+                class="mini-photo"
+              />
+              {{ option.firstName }} {{ option.lastName }}
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
     <span class="example-spacer"></span>
     <button mat-button class="btn-nav" routerLink="">Todos</button>
-    <button mat-button class="btn-nav"routerLink="/favorites">Favoritos</button>
+    <button mat-button class="btn-nav" routerLink="/favorites">
+      Favoritos
+    </button>
     <button mat-button class="btn-nav" routerLink="/new">Novo Contato</button>
   </mat-toolbar-row>
   <!-- <mat-toolbar-row>

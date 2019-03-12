@@ -9,6 +9,8 @@ import { delay, tap, take } from 'rxjs/operators';
 })
 export class ContactsService {
 
+  updated = true;
+
   private readonly API = `${environment.API}`;
 
   constructor(private http: HttpClient) { }
@@ -38,9 +40,18 @@ export class ContactsService {
 
   save(contact) {
     if (contact.id) {
+      this.verificatorChange();
       return this.updateContact(this.transformContact(contact));
     }
     return this.newContact(this.transformContact(contact));
+  }
+
+  public getVerificator() {
+    return this.updated;
+  }
+
+  public verificatorChange() {
+    this.updated = !this.updated;
   }
 
   transformContact(contact) {
