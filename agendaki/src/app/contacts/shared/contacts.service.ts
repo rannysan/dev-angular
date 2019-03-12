@@ -38,8 +38,27 @@ export class ContactsService {
 
   save(contact) {
     if (contact.id) {
-      return this.updateContact(contact);
+      return this.updateContact(this.transformContact(contact));
     }
-    return this.newContact(contact);
+    return this.newContact(this.transformContact(contact));
+  }
+
+  transformContact(contact) {
+    const aux = {
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email,
+      gender: contact.gender,
+      isFavorite: contact.isFavorite,
+      company: contact.info.company,
+      avatar: contact.info.avatar,
+      address: contact.info.address,
+      phone: contact.info.phone,
+      comments: contact.info.comments,
+      id: contact.id
+    };
+
+    return aux;
+
   }
 }

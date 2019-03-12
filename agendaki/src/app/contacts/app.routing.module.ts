@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { InsertComponent } from './insert/insert.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { ContactResolverGuard } from './contacts-resolver.guard';
+import { ContactResolverGuard } from '../shared/contacts-resolver.guard';
 
 const appRoutes: Routes = [
   {path: 'favorites', component: FavoritesComponent},

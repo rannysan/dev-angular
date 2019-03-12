@@ -5,9 +5,9 @@
 
       <div class="header-actions">
         <button mat-icon-button [routerLink]="[ 'edit']"><mat-icon>create</mat-icon></button>
-        <button mat-icon-button><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="delContact(contact.id)"><mat-icon>close</mat-icon></button>
         <button mat-icon-button>
-          <mat-icon [style.color]="contact.isFavorite ? 'yellow' : 'black'"
+          <mat-icon (click)=" favVerif(contact.id, $event)" [style.color]="contact.isFavorite ? 'yellow' : 'black'"
             >star</mat-icon
           >
         </button>

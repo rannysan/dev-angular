@@ -1,0 +1,12 @@
+<div >
+  <h1 mat-dialog-title >Alerta - Deletar</h1>
+  <div mat-dialog-content >
+    <p>Realmente deseja deletar?</p>
+  </div>
+  <div mat-dialog-actions >
+    <button mat-raised-button color="primary" (click)="onNoClick()">
+      Cancelar
+    </button>
+    <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Deletar</button>
+  </div>
+</div>

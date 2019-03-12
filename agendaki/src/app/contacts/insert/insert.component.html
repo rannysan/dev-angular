@@ -9,7 +9,8 @@
     <form class="example-form" [formGroup]="form">
       <div class="grid-form">
         <div class="grid-photo">
-          <img src="{{ photoView }}" class="cont-img" alt="Exemplo imagem" />
+            <div formGroupName="info">
+          <img [src]="avatar == '' ? avatar : photoView" class="cont-img" alt="Exemplo imagem" />
           <mat-form-field class="example-full-width">
             <label for="avatar">URL da foto</label>
             <input
@@ -19,7 +20,9 @@
               id="avatar"
               formControlName="avatar"
             />
+
           </mat-form-field>
+        </div>
 
           <button mat-button color="basic" (click)="photoView = urlPic.value">
             Carregar
@@ -53,6 +56,7 @@
           <br />
 
           <mat-form-field class="example-full-width">
+            <div formGroupName="info">
             <input
               matInput
               placeholder="Telefone*"
@@ -60,6 +64,7 @@
               id="phone"
               formControlName="phone"
             />
+          </div>
           </mat-form-field>
           <br />
           <mat-form-field class="example-full-width">
@@ -85,7 +90,7 @@
               formControlName="email"
             />
           </mat-form-field>
-
+          <div formGroupName="info">
           <mat-form-field class="example-full-width">
             <input
               matInput
@@ -111,7 +116,9 @@
               id="comments"
               formControlName="comments"
             ></textarea>
+
           </mat-form-field>
+        </div>
         </div>
       </div>
       <div class="btn-group">

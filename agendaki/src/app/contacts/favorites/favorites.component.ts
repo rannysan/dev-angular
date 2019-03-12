@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactsService } from './../contacts.service';
-import { Contact } from './../contacts';
+import { ContactsService } from '../shared/contacts.service';
+import { Contact } from '../shared/contacts';
 import { Observable, empty, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 

@@ -11,3 +11,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   margin: 10px auto 0;
   width: 100%;
 }
+
+
+.mat-dialog-container{
+  background-color: #424242;
+  color: white;
+  text-align: center;
+}

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { ContactsService } from './contacts.service';
-import { Contact } from './contacts';
+import { ContactsService } from '../contacts/shared/contacts.service';
+import { Contact } from '../contacts/shared/contacts';
 
 @Injectable({
   providedIn: 'root'

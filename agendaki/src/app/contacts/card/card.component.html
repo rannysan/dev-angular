@@ -3,12 +3,13 @@
     <div mat-card-avatar>
       <img
         class="star-fav"
+        #starFav
         [src]="
           isFavorite
             ? '../../assets/images/starColor.png'
             : '../../assets/images/starBlack.png'
         "
-        alt=""
+        (click)="favVerif(id)"
       />
     </div>
     <mat-card-title>{{ firstName }}</mat-card-title>

@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable, empty, Subject} from 'rxjs';
-import {map, startWith, catchError} from 'rxjs/operators';
-import { ContactsService } from '../contacts.service';
-import { Contact } from '../contacts';
+import {Observable, Subject} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { ContactsService } from '../contacts/shared/contacts.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,10 +16,10 @@ export class NavBarComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   constructor(private service: ContactsService) {
-    this.loadContactFilter();
   }
 
   ngOnInit() {
+    this.loadContactFilter();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
