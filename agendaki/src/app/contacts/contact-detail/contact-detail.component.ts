@@ -6,6 +6,7 @@ import { Contact } from '../shared/contacts';
 import { catchError } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { MatDialogConfig, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
 
 @Component({
   selector: 'app-contact-detail',
@@ -78,7 +79,7 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
        flag: false
    };
 
-   const dialogRef = this.dialog.open(AlertDelComponent, dialogConfig);
+   const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
 
    return dialogRef.afterClosed();
  }
@@ -101,27 +102,4 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
   });
 }
 
-}
-
-@Component({
-  selector: 'app-alert-model',
-  templateUrl: '../card/model-alert.component.html',
-  styleUrls: ['../card/card.component.css']
-})
-export class AlertDelComponent {
-
-  verif = false;
-
-  constructor(
-    public dialogRef: MatDialogRef<AlertDelComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {}
-
-    onNoClick(): void {
-      this.dialogRef.close(this.verif);
-    }
-
-    save() {
-      this.verif = true;
-      this.dialogRef.close(this.verif);
-   }
 }

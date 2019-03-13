@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable, empty, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
 
 
 export interface Gender {
@@ -42,6 +43,7 @@ export class InsertComponent implements OnInit {
   contact$: Observable<any>;
   error$ = new Subject<boolean>();
   mensage = 'Confirme seu cadastro!';
+  avatar: string;
 
   genders: Gender[] = [
     {value: 'm', viewValue: 'Homem'},
@@ -59,12 +61,10 @@ export class InsertComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    // tslint:disable-next-line:no-string-literal
-    const contact = this.route.snapshot.data['contact'];
+       const contact = this.route.snapshot.data['contact'];
     if (contact !== null) {
-      // const auxCont = this.transformContact(contact);
-      this.mensage = 'Deseja alterar o contato?';
       this.form.patchValue(contact);
+      this.avatar = contact.info.avatar;
     }
     console.log(contact);
   }
@@ -122,30 +122,8 @@ export class InsertComponent implements OnInit {
         flag: false
     };
 
-    const dialogRef = this.dialog.open(AlertGenericComponent, dialogConfig);
+    const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
 
     return dialogRef.afterClosed();
   }
-}
-
-@Component({
-  selector: 'app-alert-model',
-  templateUrl: './model-alert.component.html'
-})
-export class AlertGenericComponent {
-
-  verif = false;
-
-  constructor(
-    public dialogRef: MatDialogRef<AlertGenericComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {}
-
-    onNoClick(): void {
-      this.dialogRef.close(this.verif);
-    }
-
-    save() {
-      this.verif = true;
-      this.dialogRef.close(this.verif);
-   }
 }

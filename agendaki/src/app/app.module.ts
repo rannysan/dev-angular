@@ -23,13 +23,13 @@ import { HomeComponent } from './contacts/home/home.component';
 import { FavoritesComponent } from './contacts/favorites/favorites.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './contacts/card/card.component';
-import { InsertComponent, AlertGenericComponent } from './contacts/insert/insert.component';
 import {NgxMaskModule} from 'ngx-mask';
-import { ContactDetailComponent, AlertDelComponent } from './contacts/contact-detail/contact-detail.component';
 import { AppRoutingModule } from './contacts/app.routing.module';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AlertModelComponent } from './contacts/card/card.component';
+import { MyDialogComponent } from './contacts/shared/my-dialog/my-dialog.component';
+import { InsertComponent } from './contacts/insert/insert.component';
+import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,7 @@ import { AlertModelComponent } from './contacts/card/card.component';
     CardComponent,
     InsertComponent,
     ContactDetailComponent,
-    AlertModelComponent,
-    AlertDelComponent,
-    AlertGenericComponent
+    MyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,9 +65,8 @@ import { AlertModelComponent } from './contacts/card/card.component';
     MatPaginatorModule,
     MatDialogModule
   ],
-  entryComponents: [AlertModelComponent,
-    AlertDelComponent,
-    AlertGenericComponent
+  entryComponents: [
+    MyDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

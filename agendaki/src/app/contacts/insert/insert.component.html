@@ -10,7 +10,7 @@
       <div class="grid-form">
         <div class="grid-photo">
             <div formGroupName="info">
-          <img [src]="avatar == '' ? avatar : photoView" class="cont-img" alt="Exemplo imagem" />
+          <img [src]="avatar == '' || avatar == null ? photoView : avatar" class="cont-img" alt="Exemplo imagem" />
           <mat-form-field class="example-full-width">
             <label for="avatar">URL da foto</label>
             <input

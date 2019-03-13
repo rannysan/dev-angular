@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { ContactsService } from '../shared/contacts.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class CardComponent implements OnInit {
         flag: false
     };
 
-    const dialogRef = this.dialog.open(AlertModelComponent, dialogConfig);
+    const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
 
     return dialogRef.afterClosed();
   }
@@ -67,28 +68,4 @@ export class CardComponent implements OnInit {
   }
 
 
-}
-
-
-@Component({
-  selector: 'app-alert-model',
-  templateUrl: './model-alert.component.html',
-  styleUrls: ['./card.component.css']
-})
-export class AlertModelComponent {
-
-  verif = false;
-
-  constructor(
-    public dialogRef: MatDialogRef<AlertModelComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {}
-
-    onNoClick(): void {
-      this.dialogRef.close(this.verif);
-    }
-
-    save() {
-      this.verif = true;
-      this.dialogRef.close(this.verif);
-   }
 }
